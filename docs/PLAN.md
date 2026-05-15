@@ -110,13 +110,14 @@ README, cheatsheet, flashcards, questoes
 Recursos complementares por padrao:
 
 ```txt
-casos-de-uso, lab, links
+casos-de-uso, lab, links e recursos nao padronizados
 ```
 
 Excecao:
 
 ```txt
 lab e requerido quando o Study Module for um Lab Module.
+No MVP, um Lab Module e identificado por nome Lab/Labs ou por conter lab como recurso principal com apenas recursos de apoio.
 ```
 
 Recursos ausentes nao aparecem na experiencia do modulo e nao contam como pendencia.

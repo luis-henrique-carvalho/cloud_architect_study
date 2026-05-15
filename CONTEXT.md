@@ -112,6 +112,7 @@ _Avoid_: quiz score, question grade
 - A **Study Note** belongs to one **Study Resource**.
 - **Review History** belongs to one **Study Resource**.
 - A **Study Resource** is either a **Required Study Resource** or a **Complementary Study Resource**.
+- A **Study Resource** without a confirmed required role is a **Complementary Study Resource**.
 - **Module Progress** is calculated from the completion of **Required Study Resources**.
 - A **Lab Module** treats its lab activity as a **Required Study Resource**.
 - A missing resource is not part of a **Study Module**.
@@ -171,6 +172,7 @@ _Avoid_: quiz score, question grade
 - "continue" could mean last opened or next required item; resolved: **Continue Target** prefers the unfinished last opened resource, then the next incomplete required resource.
 - "progress" could mean a module-level checkbox or resource-level completion; resolved: progress is tracked per **Study Resource** and aggregated into **Module Progress**.
 - "required" depends on the learning role of a resource; resolved: `README`, `cheatsheet`, `flashcards`, and `questoes` are required by default, while `lab` is required only for a **Lab Module**.
+- "extra resource" could mean ignored material or a blocking requirement; resolved: an unclassified **Study Resource** is included as a **Complementary Study Resource**.
 - "content" could mean the course material or the learner's progress data; resolved: **Study Content** is authored learning material, while **Learner State** is personal study history.
 - "markdown location" could mean loose files at the repository root or an organized **Content Library**; resolved: the portal reads from a dedicated **Content Library**.
 - "missing resource" does not mean incomplete work; resolved: only existing **Study Resources** appear in the module experience.

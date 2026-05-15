@@ -68,7 +68,7 @@ Ela nao atende o requisito principal com a mesma consistencia arquitetural.
 
 ## QuestÃ£o 4
 
-Qual alternativa tende a ser incorreta na prova de 
+Qual alternativa tende a ser incorreta na prova de
 
 A) A que atende requisito dominante com menor complexidade.
 B) A que ignora sinais de rightsizing e dependencias da arquitetura.
@@ -109,5 +109,3 @@ A alternativa B cobre o objetivo tecnico de governanca e custos com melhor equil
 Ela nao atende o requisito principal com a mesma consistencia arquitetural.
 
 </details>
-
-

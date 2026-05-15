@@ -8,6 +8,7 @@ Construir um MVP rapido e simples do Personal Study Portal para estudar AWS SAA-
 
 - O produto e um Personal Study Portal local para um unico aprendiz.
 - O app Next.js fica na raiz do repositorio.
+- O codigo da aplicacao fica em `src/`, seguindo o padrao do `create-next-app`.
 - O Study Content fica em `content/modules/`.
 - O Markdown continua sendo a fonte da verdade do conteudo.
 - O Learner State fica separado em SQLite.
@@ -51,17 +52,24 @@ Construir um MVP rapido e simples do Personal Study Portal para estudar AWS SAA-
 
 ```txt
 .
-├── app/
-│   ├── page.tsx
-│   ├── modulos/
-│   │   ├── page.tsx
-│   │   └── [slug]/page.tsx
-│   ├── erros/page.tsx
-│   ├── configuracoes/page.tsx
-│   └── api/
-├── components/
+├── src/
 │   ├── app/
-│   └── ui/
+│   │   ├── page.tsx
+│   │   ├── modulos/
+│   │   │   ├── page.tsx
+│   │   │   └── [slug]/page.tsx
+│   │   ├── erros/page.tsx
+│   │   ├── configuracoes/page.tsx
+│   │   └── api/
+│   ├── components/
+│   │   ├── app/
+│   │   └── ui/
+│   └── lib/
+│       ├── content.ts
+│       ├── markdown.ts
+│       ├── questions.ts
+│       ├── progress.ts
+│       └── db.ts
 ├── content/
 │   └── modules/
 │       └── 01-Introducao-SAA-C03/
@@ -82,12 +90,6 @@ Construir um MVP rapido e simples do Personal Study Portal para estudar AWS SAA-
 │   ├── adr/
 │   └── reference/
 │       └── index-ui-reference.html
-├── lib/
-│   ├── content.ts
-│   ├── markdown.ts
-│   ├── questions.ts
-│   ├── progress.ts
-│   └── db.ts
 └── package.json
 ```
 

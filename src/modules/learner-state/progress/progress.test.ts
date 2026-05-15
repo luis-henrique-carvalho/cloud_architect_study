@@ -6,6 +6,8 @@ import {
   upsertProgress,
   calculateModuleProgress,
   deriveOverallStats,
+  getModuleProgressRows,
+  formatProgressLabel,
 } from "./progress";
 import type { ResourceProgress } from "./progress";
 
@@ -263,5 +265,56 @@ describe("deriveOverallStats", () => {
 
     expect(result.overallPercent).toBe(100);
     expect(result.completedModules).toBe(1);
+  });
+});
+
+describe("getModuleProgressRows", () => {
+  it("returns empty array when no progress exists for the module", () => {
+    const result = getModuleProgressRows(db, "01-intro");
+    expect(result).toEqual([]);
+  });
+
+  it("returns progress rows for the specified module only", () => {
+    upsertProgress(db, "01-intro", "README", { completedAt: 1000 });
+    upsertProgress(db, "02-iam", "README", { completedAt: 2000 });
+
+    const result = getModuleProgressRows(db, "01-intro");
+
+    expect(result).toHaveLength(1);
+    expect(result[0].moduleSlug).toBe("01-intro");
+    expect(result[0].resourceKey).toBe("README");
+  });
+
+  it("returns all rows for a module when multiple resources have progress", () => {
+    upsertProgress(db, "01-intro", "README", { completedAt: 1000 });
+    upsertProgress(db, "01-intro", "cheatsheet", {});
+    upsertProgress(db, "01-intro", "flashcards", { completedAt: 3000 });
+
+    const result = getModuleProgressRows(db, "01-intro");
+
+    expect(result).toHaveLength(3);
+    expect(result.map((r) => r.resourceKey).sort()).toEqual([
+      "README",
+      "cheatsheet",
+      "flashcards",
+    ]);
+  });
+});
+
+describe("formatProgressLabel", () => {
+  it("returns '0 de 5 requeridos concluídos' when nothing is complete", () => {
+    expect(formatProgressLabel(0, 5)).toBe("0 de 5 requeridos concluídos");
+  });
+
+  it("returns correct label for partial completion", () => {
+    expect(formatProgressLabel(2, 5)).toBe("2 de 5 requeridos concluídos");
+  });
+
+  it("returns correct label for full completion", () => {
+    expect(formatProgressLabel(5, 5)).toBe("5 de 5 requeridos concluídos");
+  });
+
+  it("returns '0 de 0 requeridos concluídos' for a module with no required resources", () => {
+    expect(formatProgressLabel(0, 0)).toBe("0 de 0 requeridos concluídos");
   });
 });

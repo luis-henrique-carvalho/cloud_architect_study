@@ -129,3 +129,18 @@ export function deriveOverallStats(
     overallPercent,
   };
 }
+
+export function getModuleProgressRows(
+  db: Db,
+  moduleSlug: string,
+): ResourceProgress[] {
+  return db
+    .select()
+    .from(resourceProgress)
+    .where(eq(resourceProgress.moduleSlug, moduleSlug))
+    .all();
+}
+
+export function formatProgressLabel(completed: number, total: number): string {
+  return `${completed} de ${total} requeridos concluídos`;
+}

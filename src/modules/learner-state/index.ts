@@ -3,6 +3,8 @@ export {
   upsertProgress,
   calculateModuleProgress,
   deriveOverallStats,
+  getModuleProgressRows,
+  formatProgressLabel,
 } from "./progress/progress";
 export type {
   ResourceProgress,

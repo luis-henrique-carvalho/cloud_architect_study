@@ -5,6 +5,7 @@ import {
   getLatestAttempt,
   listAttempts,
   listIncorrectAttempts,
+  countMistakes,
 } from "./attempts";
 
 let db: TestDb;
@@ -112,5 +113,46 @@ describe("listIncorrectAttempts — Mistake Notebook feed", () => {
 
     const results = listIncorrectAttempts(db);
     expect(results).toHaveLength(1);
+  });
+});
+
+describe("countMistakes", () => {
+  it("returns 0 when no question attempts exist", () => {
+    expect(countMistakes(db)).toBe(0);
+  });
+
+  it("returns 0 when all latest attempts are correct", () => {
+    recordAttempt(db, "m1", "questoes", "q1", "A", "A");
+    recordAttempt(db, "m1", "questoes", "q2", "B", "B");
+
+    expect(countMistakes(db)).toBe(0);
+  });
+
+  it("returns the count of questions whose latest attempt is incorrect", () => {
+    recordAttempt(db, "m1", "questoes", "q1", "B", "A"); // incorrect
+    recordAttempt(db, "m1", "questoes", "q2", "C", "A"); // incorrect
+
+    expect(countMistakes(db)).toBe(2);
+  });
+
+  it("does not double-count a question with multiple incorrect attempts", () => {
+    recordAttempt(db, "m1", "questoes", "q1", "B", "A"); // incorrect
+    recordAttempt(db, "m1", "questoes", "q1", "C", "A"); // incorrect again
+
+    expect(countMistakes(db)).toBe(1);
+  });
+
+  it("does not count a question whose latest attempt is correct", () => {
+    recordAttempt(db, "m1", "questoes", "q1", "B", "A"); // incorrect
+    recordAttempt(db, "m1", "questoes", "q1", "A", "A"); // corrected — latest is correct
+
+    expect(countMistakes(db)).toBe(0);
+  });
+
+  it("counts across different modules independently", () => {
+    recordAttempt(db, "m1", "questoes", "q1", "B", "A"); // incorrect
+    recordAttempt(db, "m2", "questoes", "q1", "A", "A"); // correct in different module
+
+    expect(countMistakes(db)).toBe(1);
   });
 });

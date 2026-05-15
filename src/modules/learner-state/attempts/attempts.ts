@@ -107,3 +107,34 @@ export function listIncorrectAttempts(db: Db): QuestionAttempt[] {
     )
     .all();
 }
+
+export function countMistakes(db: Db): number {
+  const latestIds = db
+    .select({ id: sql<number>`MAX(${questionAttempts.id})` })
+    .from(questionAttempts)
+    .groupBy(
+      questionAttempts.moduleSlug,
+      questionAttempts.resourceKey,
+      questionAttempts.questionId,
+    )
+    .all()
+    .map((r) => r.id);
+
+  if (latestIds.length === 0) return 0;
+
+  const result = db
+    .select({ count: sql<number>`count(*)` })
+    .from(questionAttempts)
+    .where(
+      and(
+        sql`${questionAttempts.id} IN (${sql.join(
+          latestIds.map((id) => sql`${id}`),
+          sql`, `,
+        )})`,
+        eq(questionAttempts.isCorrect, false),
+      ),
+    )
+    .get();
+
+  return result?.count ?? 0;
+}

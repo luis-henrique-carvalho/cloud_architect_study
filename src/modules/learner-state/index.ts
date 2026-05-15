@@ -1,5 +1,14 @@
-export { getProgress, upsertProgress } from "./progress/progress";
-export type { ResourceProgress } from "./progress/progress";
+export {
+  getProgress,
+  upsertProgress,
+  calculateModuleProgress,
+  deriveOverallStats,
+} from "./progress/progress";
+export type {
+  ResourceProgress,
+  ModuleProgress,
+  OverallStats,
+} from "./progress/progress";
 
 export { recordVisit, getLastVisit } from "./visits/visits";
 export type { ResourceVisit } from "./visits/visits";
@@ -12,5 +21,9 @@ export {
   getLatestAttempt,
   listAttempts,
   listIncorrectAttempts,
+  countMistakes,
 } from "./attempts/attempts";
 export type { QuestionAttempt } from "./attempts/attempts";
+
+export { resolveContinueTarget } from "./continue-target/continue-target";
+export type { ContinueTarget } from "./continue-target/continue-target";

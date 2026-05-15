@@ -1,0 +1,219 @@
+{
+  "main": {
+    "id": "27307eeddaa74a1d",
+    "type": "split",
+    "children": [
+      {
+        "id": "f304cff529b5562e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1ef39340bd11c83a",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Nova aba"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "3bb18b453413fee1",
+    "type": "split",
+    "children": [
+      {
+        "id": "d46081f61f34ced8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3852e61f25030065",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de arquivos"
+            }
+          },
+          {
+            "id": "0578cdf631a5574b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Procurar"
+            }
+          },
+          {
+            "id": "6371db08b42738bd",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "d3dee2a4a0a3b26a",
+    "type": "split",
+    "children": [
+      {
+        "id": "ef2f913436478e6b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "df3d892df816db56",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Links inversos"
+            }
+          },
+          {
+            "id": "a7ba47780ed6dfc6",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Links de saída"
+            }
+          },
+          {
+            "id": "252a6be0f2292c19",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "85a121d968043df5",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas as propriedades"
+            }
+          },
+          {
+            "id": "3ffff48bc9ea700c",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "01-Introducao-SAA-C03/casos-de-uso.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Sumário de casos-de-uso"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Criar nova base": false
+    }
+  },
+  "active": "3852e61f25030065",
+  "lastOpenFiles": [
+    "eslint.config.mjs",
+    "data",
+    "lib/utils.ts",
+    "lib",
+    "components/ui/button.tsx",
+    "components/ui",
+    "components",
+    "node_modules/@mswjs/interceptors/lib/node/utils/node/index.mjs",
+    "node_modules/@mswjs/interceptors/lib/node/utils/node/index.d.mts",
+    "node_modules/@mswjs/interceptors/lib/node/utils/node/index.d.cts",
+    "node_modules/@mswjs/interceptors/lib/node/utils/node/index.cjs",
+    "node_modules/@mswjs/interceptors/node_modules/@open-draft/deferred-promise/README.md",
+    "node_modules/@mswjs/interceptors/README.md",
+    "node_modules/@mswjs/interceptors/LICENSE.md",
+    "node_modules/string-width/node_modules/emoji-regex/README.md",
+    "node_modules/string-width/readme.md",
+    "node_modules/router/node_modules/path-to-regexp/Readme.md",
+    "node_modules/router/README.md",
+    "node_modules/router/HISTORY.md",
+    "node_modules/type-is/node_modules/content-type/README.md",
+    "node_modules/type-is/README.md",
+    "node_modules/type-is/HISTORY.md",
+    "node_modules/npm-run-path/node_modules/path-key/readme.md",
+    "node_modules/npm-run-path/readme.md",
+    "node_modules/prompts/node_modules/kleur/readme.md",
+    "node_modules/prompts/readme.md",
+    "node_modules/ora/node_modules/chalk/readme.md",
+    "node_modules/ora/readme.md",
+    "node_modules/@modelcontextprotocol/sdk/node_modules/json-schema-traverse/README.md",
+    "node_modules/@modelcontextprotocol/sdk/node_modules/ajv/README.md",
+    "node_modules/@modelcontextprotocol/sdk/README.md",
+    "node_modules/@babel/helper-create-class-features-plugin/node_modules/semver/README.md",
+    "node_modules/@babel/helper-create-class-features-plugin/README.md",
+    "node_modules/msw/node_modules/cookie/README.md",
+    "node_modules/msw/README.md",
+    "node_modules/msw/LICENSE.md"
+  ]
+}

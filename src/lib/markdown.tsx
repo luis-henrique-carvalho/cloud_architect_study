@@ -1,15 +1,15 @@
-import ReactMarkdown from "react-markdown"
-import rehypeRaw from "rehype-raw"
-import remarkGfm from "remark-gfm"
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+import remarkGfm from "remark-gfm";
 
-import { getStudyResourceHref } from "@/lib/content"
-import { cn } from "@/lib/utils"
+import { getStudyResourceHref } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 type MarkdownRendererProps = {
-  content: string
-  moduleSlug?: string
-  className?: string
-}
+  content: string;
+  moduleSlug?: string;
+  className?: string;
+};
 
 export function MarkdownRenderer({
   content,
@@ -20,7 +20,7 @@ export function MarkdownRenderer({
     <div
       className={cn(
         "flex max-w-none flex-col gap-5 text-sm leading-7 text-foreground",
-        className
+        className,
       )}
     >
       <ReactMarkdown
@@ -28,8 +28,8 @@ export function MarkdownRenderer({
         rehypePlugins={[rehypeRaw]}
         components={{
           a: ({ href = "", children, ...props }) => {
-            const resolvedHref = resolveContentHref(href, moduleSlug)
-            const external = isExternalHref(resolvedHref)
+            const resolvedHref = resolveContentHref(href, moduleSlug);
+            const external = isExternalHref(resolvedHref);
 
             return (
               <a
@@ -41,7 +41,7 @@ export function MarkdownRenderer({
               >
                 {children}
               </a>
-            )
+            );
           },
           blockquote: ({ children }) => (
             <blockquote className="rounded-md border bg-muted/40 px-4 py-3 text-muted-foreground">
@@ -52,7 +52,7 @@ export function MarkdownRenderer({
             <code
               className={cn(
                 "rounded bg-muted px-1 py-0.5 font-mono text-[0.9em]",
-                className
+                className,
               )}
             >
               {children}
@@ -94,7 +94,9 @@ export function MarkdownRenderer({
             </pre>
           ),
           strong: ({ children }) => (
-            <strong className="font-semibold text-foreground">{children}</strong>
+            <strong className="font-semibold text-foreground">
+              {children}
+            </strong>
           ),
           summary: ({ children }) => (
             <summary className="cursor-pointer font-medium text-foreground">
@@ -122,23 +124,23 @@ export function MarkdownRenderer({
         {content}
       </ReactMarkdown>
     </div>
-  )
+  );
 }
 
 function resolveContentHref(href: string, moduleSlug?: string) {
   if (!moduleSlug || isExternalHref(href) || href.startsWith("#")) {
-    return href
+    return href;
   }
 
   if (href.endsWith(".md") && !href.includes("/")) {
-    const resourceKey = href.replace(/\.md$/, "")
+    const resourceKey = href.replace(/\.md$/, "");
 
-    return getStudyResourceHref(moduleSlug, resourceKey)
+    return getStudyResourceHref(moduleSlug, resourceKey);
   }
 
-  return href
+  return href;
 }
 
 function isExternalHref(href: string) {
-  return /^(https?:)?\/\//.test(href) || href.startsWith("mailto:")
+  return /^(https?:)?\/\//.test(href) || href.startsWith("mailto:");
 }

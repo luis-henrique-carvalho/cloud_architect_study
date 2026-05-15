@@ -28,13 +28,16 @@ import {
   formatProgressLabel,
   getModuleProgressRows,
   getNote,
+  listAttempts,
   recordVisit,
 } from "@/modules/learner-state";
+import { parsePracticeQuestions } from "@/modules/practice-questions";
 import { resolveActiveTab } from "./utils/tab-helpers";
 import { ResourceTabs } from "./components/resource-tabs";
 import { CompletionToggle } from "./components/completion-toggle";
 import { NotesEditor } from "./components/notes-editor";
 import { HistoryPanel } from "./components/history-panel";
+import { PracticeQuestionsPanel } from "./components/practice-questions-panel";
 
 type ModulePageProps = {
   params: Promise<{
@@ -120,6 +123,15 @@ export default async function ModulePage({
 
   // 010 — fetch the current note for the active resource
   const currentNote = getNote(db, studyModule.slug, selectedResource.key);
+
+  // 014/015 — parse practice questions for questoes resource
+  const practiceState = (() => {
+    if (selectedResource.key !== "questoes") return null;
+    const parsed = parsePracticeQuestions(content.markdown);
+    if (parsed.type !== "success") return null;
+    const attempts = listAttempts(db, studyModule.slug, selectedResource.key);
+    return { questions: parsed.questions, attempts };
+  })();
 
   // 008 — resolve active tab from URL
   const activeTab = resolveActiveTab(query.tab);
@@ -257,10 +269,19 @@ export default async function ModulePage({
                     </div>
                   </div>
 
-                  <MarkdownRenderer
-                    content={content.markdown}
-                    moduleSlug={studyModule.slug}
-                  />
+                  {practiceState ? (
+                    <PracticeQuestionsPanel
+                      moduleSlug={studyModule.slug}
+                      resourceKey={selectedResource.key}
+                      questions={practiceState.questions}
+                      initialAttempts={practiceState.attempts}
+                    />
+                  ) : (
+                    <MarkdownRenderer
+                      content={content.markdown}
+                      moduleSlug={studyModule.slug}
+                    />
+                  )}
                 </div>
               }
               notesPanel={
